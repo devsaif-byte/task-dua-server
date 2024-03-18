@@ -26,11 +26,11 @@ app.listen(PORT, async () => {
 	console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-app.get("/", (req, res) => {
+app.get("https://server-nahipata.koyeb.app/", (req, res) => {
 	res.send("Hello World!");
 });
 
-app.get("/category", async (req, res) => {
+app.get("https://server-nahipata.koyeb.app/category", async (req, res) => {
 	try {
 		// const category = await db.all(`SELECT * FROM category`);
 		const category = await db.all(`SELECT * FROM category`);
@@ -39,7 +39,7 @@ app.get("/category", async (req, res) => {
 		console.log(err.message);
 	}
 });
-app.get("/sub-category", async (req, res) => {
+app.get("https://server-nahipata.koyeb.app/sub-category", async (req, res) => {
 	try {
 		const sub_category = await db.all(`SELECT * FROM sub_category`);
 		res.json(sub_category);
@@ -47,7 +47,7 @@ app.get("/sub-category", async (req, res) => {
 		console.log(err.message);
 	}
 });
-app.get("/dua", async (req, res) => {
+app.get("https://server-nahipata.koyeb.app/dua", async (req, res) => {
 	try {
 		const dua = await db.all(`SELECT * FROM dua`);
 		res.json(dua);
