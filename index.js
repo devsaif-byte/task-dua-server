@@ -23,7 +23,8 @@ const connect = async () => {
 
 app.listen(PORT, async () => {
 	await connect();
-	console.log(`Server is running on http://localhost:${PORT}`);
+	// console.log(`Server is running on http://localhost:${PORT}`);
+	console.log(`Server is running on https://server-nahipata.koyeb.app`);
 });
 
 app.get("https://server-nahipata.koyeb.app/", (req, res) => {
