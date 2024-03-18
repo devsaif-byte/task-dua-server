@@ -32,8 +32,19 @@ app.get("/", (req, res) => {
 
 app.get("/category", async (req, res) => {
 	try {
-		// const category = await db.all(`SELECT * FROM category`);
 		const category = await db.all(`SELECT * FROM category`);
+		res.json(category);
+	} catch (err) {
+		console.log(err.message);
+	}
+});
+app.get("/category/:id", async (req, res) => {
+	try {
+		const { id } = req.params;
+		const category = await db.all(
+			`SELECT * FROM category WHERE cat_id = ?`,
+			id
+		);
 		res.json(category);
 	} catch (err) {
 		console.log(err.message);
@@ -47,10 +58,35 @@ app.get("/sub-category", async (req, res) => {
 		console.log(err.message);
 	}
 });
+app.get("/sub-category/:id", async (req, res) => {
+	try {
+		const { id } = req.params;
+		const sub_category = await db.all(
+			`SELECT * FROM sub_category WHERE subcat_id = ?`,
+			id
+		);
+		res.json(sub_category);
+	} catch (err) {
+		console.log(err.message);
+	}
+});
 app.get("/dua", async (req, res) => {
 	try {
 		const dua = await db.all(`SELECT * FROM dua`);
 		res.json(dua);
+	} catch (err) {
+		console.log(err.message);
+	}
+});
+app.get("/dua/:id", async (req, res) => {
+	try {
+		const { id } = req.params;
+		const dua = await db.all(`SELECT * FROM dua WHERE id = ?`, id);
+		if (dua) {
+			res.json(dua);
+		} else {
+			res.status(404).json({ message: "Dua not found" });
+		}
 	} catch (err) {
 		console.log(err.message);
 	}
