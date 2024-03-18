@@ -24,14 +24,14 @@ const connect = async () => {
 app.listen(PORT, async () => {
 	await connect();
 	// console.log(`Server is running on http://localhost:${PORT}`);
-	console.log(`Server is running on https://server-nahipata.koyeb.app`);
+	console.log(`Server is running on https://task-dua-server.onrender.com/`);
 });
 
-app.get("https://server-nahipata.koyeb.app/", (req, res) => {
+app.get("https://task-dua-server.onrender.com/", (req, res) => {
 	res.send("Hello World!");
 });
 
-app.get("https://server-nahipata.koyeb.app/category", async (req, res) => {
+app.get("https://task-dua-server.onrender.com/category", async (req, res) => {
 	try {
 		// const category = await db.all(`SELECT * FROM category`);
 		const category = await db.all(`SELECT * FROM category`);
@@ -40,15 +40,18 @@ app.get("https://server-nahipata.koyeb.app/category", async (req, res) => {
 		console.log(err.message);
 	}
 });
-app.get("https://server-nahipata.koyeb.app/sub-category", async (req, res) => {
-	try {
-		const sub_category = await db.all(`SELECT * FROM sub_category`);
-		res.json(sub_category);
-	} catch (err) {
-		console.log(err.message);
+app.get(
+	"https://task-dua-server.onrender.com/sub-category",
+	async (req, res) => {
+		try {
+			const sub_category = await db.all(`SELECT * FROM sub_category`);
+			res.json(sub_category);
+		} catch (err) {
+			console.log(err.message);
+		}
 	}
-});
-app.get("https://server-nahipata.koyeb.app/dua", async (req, res) => {
+);
+app.get("https://task-dua-server.onrender.com/dua", async (req, res) => {
 	try {
 		const dua = await db.all(`SELECT * FROM dua`);
 		res.json(dua);
